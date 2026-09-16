@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BuyButton from "@/components/BuyButton";
 
 export default function Home() {
   return (
@@ -82,12 +83,12 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Business Pro UI Kit", price: "₹499", tag: "Best Seller" },
-              { title: "SaaS Landing Page", price: "₹399", tag: "New" },
-              { title: "E-Commerce Dashboard", price: "₹799", tag: "Admin" },
-              { title: "Portfolio Starter", price: "₹299", tag: "Minimal" }
+              { id: "business-pro-ui-kit",  title: "Business Pro UI Kit",  price: 499, tag: "Best Seller" },
+              { id: "saas-landing-page",    title: "SaaS Landing Page",    price: 399, tag: "New"         },
+              { id: "ecommerce-dashboard",  title: "E-Commerce Dashboard", price: 799, tag: "Admin"       },
+              { id: "portfolio-starter",    title: "Portfolio Starter",    price: 299, tag: "Minimal"     },
             ].map((t) => (
-              <div key={t.title} className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition group">
+              <div key={t.id} className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition group">
                 <div className="h-40 bg-gray-700 relative overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 group-hover:scale-110 transition duration-500"></div>
                   <span className="text-gray-400 text-sm font-medium z-10">Preview Image</span>
@@ -98,8 +99,8 @@ export default function Home() {
                   </div>
                   <span className="inline-block px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded mb-4">{t.tag}</span>
                   <div className="flex justify-between items-center mt-2 border-t border-gray-700 pt-4">
-                    <span className="text-white font-bold">{t.price}</span>
-                    <button className="text-sm bg-blue-600 hover:bg-blue-500 px-3 py-1.5 rounded transition font-medium">Buy Now</button>
+                    <span className="text-white font-bold">₹{t.price}</span>
+                    <BuyButton templateId={t.id} templateName={t.title} price={t.price} />
                   </div>
                 </div>
               </div>
